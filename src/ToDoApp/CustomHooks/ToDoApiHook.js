@@ -11,7 +11,7 @@ function useToDoApi() {
     async function fetchData() {
         const response = await axios({
             method: 'get',
-            url: 'https://main--react-todo-hardik.netlify.app/todos/getTodo'
+            url: 'https://todo-backend-three-pi.vercel.app/todos/getTodo'
         });
         setResult(response.data.allTodos);
         console.log(response.data.allTodos);
@@ -21,7 +21,7 @@ function useToDoApi() {
     const addTodo = async (newTodo) => {
         const response = await axios({
             method: 'post',
-            url: 'https://main--react-todo-hardik.netlify.app/todos/addTodo',
+            url: 'https://todo-backend-three-pi.vercel.app/todos/addTodo',
             data: newTodo
         });
         console.log(response.data.message);
@@ -31,7 +31,7 @@ function useToDoApi() {
     const clearTodo = async () => {
         const response = await axios({
             method: 'delete',
-            url: 'https://main--react-todo-hardik.netlify.app/todos/deleteAllTodo',
+            url: 'https://todo-backend-three-pi.vercel.app/todos/deleteAllTodo',
         });
         console.log(response.data.message);
         fetchData();
@@ -40,7 +40,7 @@ function useToDoApi() {
     const deleteTodo = async (id) => {
         const response = await axios({
             method: 'delete',
-            url: 'https://main--react-todo-hardik.netlify.app/todos/deleteTodo',
+            url: 'https://todo-backend-three-pi.vercel.app/todos/deleteTodo',
             data: { id }
         });
         console.log(response.data.message);
@@ -50,7 +50,7 @@ function useToDoApi() {
     const checkedTodo = async (updateChecked) => {
         const response = await axios({
             method: 'patch',
-            url: 'https://main--react-todo-hardik.netlify.app/todos/updateTodoChecked',
+            url: 'https://todo-backend-three-pi.vercel.app/todos/updateTodoChecked',
             data: updateChecked
         });
         console.log(response.data.message);
@@ -60,7 +60,7 @@ function useToDoApi() {
     const updateTodo = async (updateTitle) => {
         const response = await axios({
             method: 'patch',
-            url: 'https://main--react-todo-hardik.netlify.app/todos/updateTodo',
+            url: 'https://todo-backend-three-pi.vercel.app/todos/updateTodo',
             data: updateTitle
         });
         console.log(response.data.message);
