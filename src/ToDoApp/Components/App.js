@@ -6,10 +6,10 @@ function App() {
     const [taskName, setTaskName] = useState('');
     const [editTitle, setEditTitle] = useState('');
     const [result, addTodo, clearTodo, deleteTodo, checkedTodo, updateTodo] = useToDoApi();
-
+    // console.log(result)
     const handleAddTodo = () => {
         if (taskName) {
-            addTodo({ id: Date.now(), title: taskName, checked: false });
+            addTodo({  title: taskName, checked: false });
             setTaskName('');
         }
     }
@@ -47,16 +47,16 @@ function App() {
                 />
                 <div className='text-center'>
                     <button className='btn btn-primary my-3' onClick={handleAddTodo}>Add Todo</button>
-                    <button className='btn btn-danger mx-2 ' onClick={handleClearTodo}>Clear Completed</button>
+                    <button className='btn btn-danger mx-2 ' onClick={handleClearTodo}>Clear All</button>
                 </div>
                 <ul className='taskList'>
                     {result.map(todo => (
-                        <li key={todo.id} className='taskItem'>
+                        <li key={todo._id} className='taskItem'>
                             <div className='checkbox'>
                                 <input
                                     type='checkbox'
                                     checked={todo.checked}
-                                    onChange={() => handleChecked(todo.id, !todo.checked)}
+                                    onChange={() => handleChecked(todo._id, !todo.checked)}
                                 />
                             </div>
                             <input
@@ -66,8 +66,8 @@ function App() {
                                 onChange={(e) => setEditTitle(e.target.value)}
                             />
                             <div className='actions'>
-                                <button className='btn btn-primary' onClick={() => handleUpdate(todo.id, editTitle)}>Update</button>
-                                <button className='btn btn-danger' onClick={() => handleDelete(todo.id)}>Delete</button>
+                                <button className='btn btn-primary' onClick={() => handleUpdate(todo._id, editTitle)}>Update</button>
+                                <button className='btn btn-danger' onClick={() => handleDelete(todo._id)}>Delete</button>
                             </div>
                         </li>
                     ))}

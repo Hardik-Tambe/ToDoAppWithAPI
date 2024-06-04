@@ -4,23 +4,24 @@ import axios from 'axios';
 function useToDoApi() {
     const [result, setResult] = useState([]);
 
-    async function fetchData() {
-        const response = await axios({
-            method: 'get',
-            url: 'http://training.virash.in/todos/hardik'
-        });
-        setResult(response.data);
-        // console.log(response);
-    }
-
     useEffect(() => {
         fetchData();
     }, []);
 
+    async function fetchData() {
+        const response = await axios({
+            method: 'get',
+            url: 'https://main--react-todo-hardik.netlify.app/todos/getTodo'
+        });
+        setResult(response.data.allTodos);
+        console.log(response.data.allTodos);
+    }
+
+
     const addTodo = async (newTodo) => {
         const response = await axios({
             method: 'post',
-            url: 'http://training.virash.in/todos/hardik',
+            url: 'https://main--react-todo-hardik.netlify.app/todos/addTodo',
             data: newTodo
         });
         console.log(response.data.message);
@@ -29,8 +30,8 @@ function useToDoApi() {
 
     const clearTodo = async () => {
         const response = await axios({
-            method: 'get',
-            url: 'http://training.virash.in/clear/hardik',
+            method: 'delete',
+            url: 'https://main--react-todo-hardik.netlify.app/todos/deleteAllTodo',
         });
         console.log(response.data.message);
         fetchData();
@@ -39,7 +40,7 @@ function useToDoApi() {
     const deleteTodo = async (id) => {
         const response = await axios({
             method: 'delete',
-            url: 'http://training.virash.in/todos/hardik',
+            url: 'https://main--react-todo-hardik.netlify.app/todos/deleteTodo',
             data: { id }
         });
         console.log(response.data.message);
@@ -48,8 +49,8 @@ function useToDoApi() {
 
     const checkedTodo = async (updateChecked) => {
         const response = await axios({
-            method: 'put',
-            url: 'http://training.virash.in/todos/hardik',
+            method: 'patch',
+            url: 'https://main--react-todo-hardik.netlify.app/todos/updateTodoChecked',
             data: updateChecked
         });
         console.log(response.data.message);
@@ -58,8 +59,8 @@ function useToDoApi() {
 
     const updateTodo = async (updateTitle) => {
         const response = await axios({
-            method: 'post',
-            url: 'http://training.virash.in/updateTodo/hardik',
+            method: 'patch',
+            url: 'https://main--react-todo-hardik.netlify.app/todos/updateTodo',
             data: updateTitle
         });
         console.log(response.data.message);
