@@ -11,7 +11,7 @@ function useToDoApi() {
     async function fetchData() {
         const response = await axios({
             method: 'get',
-            url: 'https://todo-backend-three-pi.vercel.app/todos/getTodo'
+            url: 'https://todo-backend-c8mo.onrender.comtodos/getTodo'
         });
         setResult(response.data.allTodos);
         console.log(response.data.allTodos);
@@ -21,7 +21,7 @@ function useToDoApi() {
     const addTodo = async (newTodo) => {
         const response = await axios({
             method: 'post',
-            url: 'https://todo-backend-three-pi.vercel.app/todos/addTodo',
+            url: 'https://todo-backend-c8mo.onrender.comtodos/addTodo',
             data: newTodo
         });
         console.log(response.data.message);
@@ -31,7 +31,7 @@ function useToDoApi() {
     const clearTodo = async () => {
         const response = await axios({
             method: 'delete',
-            url: 'https://todo-backend-three-pi.vercel.app/todos/deleteAllTodo',
+            url: 'https://todo-backend-c8mo.onrender.comtodos/deleteAllTodo',
         });
         console.log(response.data.message);
         fetchData();
@@ -40,7 +40,7 @@ function useToDoApi() {
     const deleteTodo = async (id) => {
         const response = await axios({
             method: 'delete',
-            url: 'https://todo-backend-three-pi.vercel.app/todos/deleteTodo',
+            url: 'https://todo-backend-c8mo.onrender.comtodos/deleteTodo',
             data: { id }
         });
         console.log(response.data.message);
@@ -50,7 +50,7 @@ function useToDoApi() {
     const checkedTodo = async (updateChecked) => {
         const response = await axios({
             method: 'patch',
-            url: 'https://todo-backend-three-pi.vercel.app/todos/updateTodoChecked',
+            url: 'https://todo-backend-c8mo.onrender.comtodos/updateTodoChecked',
             data: updateChecked
         });
         console.log(response.data.message);
@@ -60,7 +60,7 @@ function useToDoApi() {
     const updateTodo = async (updateTitle) => {
         const response = await axios({
             method: 'patch',
-            url: 'https://todo-backend-three-pi.vercel.app/todos/updateTodo',
+            url: 'https://todo-backend-c8mo.onrender.comtodos/updateTodo',
             data: updateTitle
         });
         console.log(response.data.message);
