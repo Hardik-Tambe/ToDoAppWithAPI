@@ -10,7 +10,7 @@ function useToDoApi() {
 
   async function fetchData() {
     try {
-      const response = await axios.get('https://todo-backend-3g3y.onrender.com/getTodo');
+      const response = await axios.get('https://todo-backend-3g3y.onrender.com/todos/getTodo');
       if (response.data && response.data.allTodos) {
         setResult(response.data.allTodos);
       } else {
@@ -23,7 +23,7 @@ function useToDoApi() {
 
   const addTodo = async (newTodo) => {
     try {
-      const response = await axios.post('https://todo-backend-3g3y.onrender.com/addTodo', newTodo);
+      const response = await axios.post('https://todo-backend-3g3y.onrender.com/todos/addTodo', newTodo);
       console.log(response.data.message); // Check if the response contains the expected message
       fetchData(); // Refresh the list of todos
     } catch (error) {
@@ -33,7 +33,7 @@ function useToDoApi() {
 
   const clearTodo = async () => {
     try {
-      const response = await axios.delete('https://todo-backend-3g3y.onrender.com/deleteAllTodo');
+      const response = await axios.delete('https://todo-backend-3g3y.onrender.com/todos/deleteAllTodo');
       console.log(response.data.message);
       fetchData();
     } catch (error) {
@@ -43,7 +43,7 @@ function useToDoApi() {
 
   const deleteTodo = async (id) => {
     try {
-      const response = await axios.delete('https://todo-backend-3g3y.onrender.com/deleteTodo', { data: { id } });
+      const response = await axios.delete('https://todo-backend-3g3y.onrender.com/todos/deleteTodo', { data: { id } });
       console.log(response.data.message);
       fetchData();
     } catch (error) {
@@ -53,7 +53,7 @@ function useToDoApi() {
 
   const checkedTodo = async (updateChecked) => {
     try {
-      const response = await axios.patch('https://todo-backend-3g3y.onrender.com/updateTodoChecked', updateChecked);
+      const response = await axios.patch('https://todo-backend-3g3y.onrender.com/todos/updateTodoChecked', updateChecked);
       console.log(response.data.message);
       fetchData();
     } catch (error) {
@@ -63,7 +63,7 @@ function useToDoApi() {
 
   const updateTodo = async (updateTitle) => {
     try {
-      const response = await axios.patch('https://todo-backend-3g3y.onrender.com/updateTodo', updateTitle);
+      const response = await axios.patch('https://todo-backend-3g3y.onrender.com/todos/updateTodo', updateTitle);
       console.log(response.data.message);
       fetchData();
     } catch (error) {
