@@ -50,7 +50,7 @@ function App() {
                     <button className='btn btn-danger mx-2 ' onClick={handleClearTodo}>Clear All</button>
                 </div>
                 <ul className='taskList'>
-                    {result.map(todo => (
+                    {result && result.map(todo => (
                         <li key={todo._id} className='taskItem'>
                             <div className='checkbox'>
                                 <input
